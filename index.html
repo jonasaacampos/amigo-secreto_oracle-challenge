@@ -19,9 +19,13 @@
         
         <section class="input-section">
             <h2 class="section-title">Digite o nome dos seus amigos</h2>
+            <div><p>Ou clique aqui para alterar para a página do usuário 
+                <a href="pessoas.html" class="link">Consultar Seu Par</a>
+            </p></div>
             <div class="input-wrapper">
                 <input type="text" id="amigo" class="input-name" placeholder="Digite um nome">
                 <button class="button-add" onclick="adicionarAmigo()">Adicionar</button>
+                <button onclick="reiniciar()" class="button-reset">Reiniciar Sorteio</button>
             </div>
            
             <ul id="lista-amigos" class="name-list" aria-labelledby="listaAmigos" role="list"></ul>

@@ -160,3 +160,35 @@ ul {
 .button-draw:hover {
     background-color: var(--color-button-hover);
 }
+
+
+.result-pair {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.show-result {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.error {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.button-reset {
+    background-color: #ff4444;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.button-reset:hover {
+    background-color: #cc0000;
+}
