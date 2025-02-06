@@ -1,0 +1,113 @@
+
+let listaAmigos = [];
+let paresSorteados = new Map();
+
+/**
+ * Valida se o nome inserido é válido
+ * @param {string} nome - Nome a ser validado
+ * @returns {boolean} - Retorna true se o nome for válido
+ */
+function validarNome(nome) {
+    // Remove espaços extras e verifica se tem pelo menos 3 caracteres
+    return nome.trim().length >= 3 && !listaAmigos.includes(nome.trim());
+}
+
+/**
+ * Adiciona um novo amigo à lista
+ */
+function adicionarAmigo() {
+    const inputAmigo = document.getElementById('amigo');
+    const nome = inputAmigo.value;
+
+    if (!validarNome(nome)) {
+        alert('Nome inválido ou já existente! Digite um nome com pelo menos 3 caracteres.');
+        return;
+    }
+
+    listaAmigos.push(nome.trim());
+    inputAmigo.value = '';
+    
+    atualizarListaAmigos();
+}
+
+/**
+ * Atualiza a lista de amigos na interface
+ */
+function atualizarListaAmigos() {
+    const listaElement = document.getElementById('lista-amigos');
+    if (listaElement) {
+        listaElement.innerHTML = listaAmigos.join(', ');
+    }
+    console.log(listaAmigos);
+}
+
+/**
+ * Embaralha a lista de amigos e sorteia os pares
+ */
+function sortearAmigo() {
+    if (listaAmigos.length < 4) {
+        alert('Adicione pelo menos 4 participantes para realizar o sorteio!');
+        return;
+    }
+
+    paresSorteados.clear();
+
+    const sorteados = [...listaAmigos];
+    let resultado = [];
+
+    // Fisher-Yates shuffle algorithm
+    for (let i = sorteados.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [sorteados[i], sorteados[j]] = [sorteados[j], sorteados[i]];
+    }
+
+    // Criar pares
+    for (let i = 0; i < sorteados.length; i++) {
+        const atual = sorteados[i];
+        const proximo = sorteados[(i + 1) % sorteados.length];
+        resultado.push(`${atual} -> ${proximo}`);
+    }
+
+    salvarResultado();
+
+    exibirResultado(resultado);
+}
+
+
+function salvarResultado() {
+    for (let i = 0; i < sorteados.length; i++) {
+        const quemTira = sorteados[i];
+        const quemFoiTirado = sorteados[(i + 1) % sorteados.length];
+        paresAmigos.set(quemTira, quemFoiTirado);
+    }
+}
+
+
+/**
+ * Exibe o resultado do sorteio
+ * @param {string[]} pares - Array com os pares sorteados
+ */
+function exibirResultado(pares) {
+    const resultadoElement = document.getElementById('resultado');
+    if (resultadoElement) {
+        resultadoElement.innerHTML = pares.join('<br>');
+    }
+    showLogConsole(paresAmigos);
+}
+
+function showLogConsole(log_list) {
+    console.log(log_list);
+}
+
+/**
+ * Reinicia o sorteio, limpando todas as listas
+ */
+function reiniciar() {
+    listaAmigos = [];
+    atualizarListaAmigos();
+    
+    const resultadoElement = document.getElementById('resultado');
+    if (resultadoElement) {
+        resultadoElement.innerHTML = '';
+    }
+}
