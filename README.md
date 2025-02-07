@@ -11,7 +11,7 @@
 > Porque sorteio no papelzinho é coisa do passado! 📜➡️🗑️
 
 
-<img alt="amigo secreto generator" src="assets/repo-logo.png" width=150 align=right>
+<img alt="amigo secreto generator" src="assets/oracle-badge.png" width=150 align=right>
 
 ![](https://img.shields.io/badge/javascript-informational?style=flat&logo=javascript&logoColor=white&color=gold)
 ![](https://img.shields.io/badge/HTML-informational?style=flat&logo=html5&logoColor=white&color=blue)
