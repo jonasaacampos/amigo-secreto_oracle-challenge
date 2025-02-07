@@ -1,11 +1,18 @@
-// envia o formulário de adicionar amigo ao pressionar Enter
 document.addEventListener('DOMContentLoaded', () => {
-    const inputAmigo = document.getElementById('amigo');
+    const inputFields = document.querySelectorAll('.input-name');
     
-    inputAmigo.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            adicionarAmigo();
-        }
+    inputFields.forEach(input => {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                
+                // Identify which page/function to call
+                if (input.id === 'amigo') {
+                    adicionarAmigo();
+                } else if (input.id === 'nome-pessoa') {
+                    buscarParSorteado();
+                }
+            }
+        });
     });
 });
